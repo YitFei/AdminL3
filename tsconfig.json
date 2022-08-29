@@ -11,11 +11,9 @@
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "incremental": true,
     "esModuleInterop": true,
     "module": "esnext",
     "resolveJsonModule": true,
-    "moduleResolution": "node",
     "isolatedModules": true,
     "jsx": "preserve"
   },
@@ -23,7 +21,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/Components/Promotion/MultiSelectionList.jsx", "src/API.js"  ],
+  ],
   "exclude": [
     "node_modules"
   ]
