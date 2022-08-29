@@ -1,4 +1,5 @@
 import { AppContextType, AppType } from "next/dist/next-server/lib/utils";
+import Head from "next/head";
 import "./styles.css";
 import { KeycloakProvider } from "../components/KeycloakProvider";
 import { ServerProvider } from "../components/ServerProvider";
