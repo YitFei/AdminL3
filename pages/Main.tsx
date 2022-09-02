@@ -63,8 +63,7 @@ function Profile() {
       redirectUri: Main_URL + "/Admin",
     });
   }, [done]);
-  console.log(keycloak);
-  console.log(keycloak.token);
+
   return (
     <div>
       <CustomAlert

@@ -97,6 +97,9 @@ export default function EditDataCard({ isEdit, item, data, setData, token }) {
   }
 
   let IsSelectionTextField = item.inputType === "select";
+  if (item.fieldName === "tag") {
+    IsSelectionTextField = false;
+  }
   const handleChange = (event, fieldName) => {
     if (
       fieldName === "courseDate" ||
@@ -206,7 +209,9 @@ export default function EditDataCard({ isEdit, item, data, setData, token }) {
     );
   } else {
     uiTextField =
-      (item.inputType !== "time" && item.inputType !== "date") ||
+      (item.inputType !== "time" &&
+        item.inputType !== "date" &&
+        item.fieldName !== "tag") ||
       item.fieldName === "classCancel" ? (
         <TextField
           sx={{
@@ -280,32 +285,9 @@ export default function EditDataCard({ isEdit, item, data, setData, token }) {
         </Grid>
       );
   }
-
+  // console.log(data);
   return (
     <Grid key={item.fieldName} fullWidth fullHeight sx={{ boxShadow: 0 }}>
-      {/* <Card sx={{ minWidth: 10 }}>
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            <Grid sx={{ border: 0 }}>{uiControl}</Grid>
-
-            <Grid sx={{ marginTop: "5%" }}>
-              <Typography align="center">{item.displayName}</Typography>
-            </Grid>
-            <Grid sx={{ marginTop: "5%" }}>{uiTextField}</Grid>
-          </Typography>
-        </CardContent>
-        {isEdit && (
-          <CardActions>
-            <Button
-              sx={{ p: 1, m: 1, mx: "auto" }}
-              size="small"
-              onClick={handleOnEditClick}
-            >
-              Edit {item.displayName}
-            </Button>
-          </CardActions>
-        )}
-      </Card> */}
       <Grid sx={{ border: 0 }}>{uiControl}</Grid>
       <Grid container direction="row" alignItems="center">
         <Grid item sx={{ border: 0, width: 150 }}>
@@ -313,7 +295,34 @@ export default function EditDataCard({ isEdit, item, data, setData, token }) {
         </Grid>
         <Grid item sx={{ border: 0, width: 400 }}>
           {" "}
-          {uiTextField}
+          {item.fieldName !== "tag" && uiTextField}
+          {item.fieldName === "tag" && (
+            <TextField
+              sx={{
+                "& legend": { display: "none" },
+                "& fieldset": { top: 0 },
+                marginLeft: "5%",
+                marginRight: "5%",
+                width: "90%",
+                backgroundColor: enable ? enableColor : disableColor,
+              }}
+              type={"select"}
+              select={true}
+              value={valueData()}
+              onChange={(e) => handleChange(e, item.fieldName)}
+              disabled={!enable}
+            >
+              {["s1", "s2", "s3", "s4", "s5", "s6"].map((option) => {
+                return (
+                  item.fieldName === "tag" && (
+                    <MenuItem key={option} value={option}>
+                      {option}
+                    </MenuItem>
+                  )
+                );
+              })}
+            </TextField>
+          )}
         </Grid>
       </Grid>
     </Grid>

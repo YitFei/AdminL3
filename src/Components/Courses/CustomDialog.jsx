@@ -76,11 +76,14 @@ var defaultData = {
   },
   zoomUrl: "",
   googleClassroom: "",
+  tag: "",
 };
 
 export default function CustomDialog(props) {
   const handleClose = (action) => {
     let responseResult = false;
+
+    console.log(props.data);
     if (action === "Confirm") {
       if (props.isEdit) {
         let updateData = {
@@ -94,6 +97,7 @@ export default function CustomDialog(props) {
           startDate: props.data.startDate,
           startTime: props.data.timetableCreateVM.startTime,
           teacherId: props.data.teacherId,
+          tag: props.data.tag,
         };
 
         responseResult = API(

@@ -102,8 +102,7 @@ export default function DataGridCourses(props) {
   });
   const [teacherList, setTeacherList] = React.useState([]);
   const [isEdit, setIsEdit] = React.useState(false);
-  console.log("sini token");
-  console.log(props.token);
+
   var defaultData = {
     courseActive: "Y",
     courseCost: 0,
@@ -122,6 +121,7 @@ export default function DataGridCourses(props) {
     },
     zoomUrl: "",
     googleClassroom: "",
+    tag: "",
   };
 
   const [checked, setChecked] = React.useState(false);
@@ -143,6 +143,7 @@ export default function DataGridCourses(props) {
       startDate: selectedRow.startDate,
       startTime: selectedRow.startTime,
       teacherId: selectedRow.teacherId,
+      tag: selectedRow.tag,
     };
 
     API(
@@ -330,6 +331,7 @@ export default function DataGridCourses(props) {
             },
             zoomUrl: row.zoomUrl,
             googleClassroom: row.googleClassroom,
+            tag: row.tag,
           };
           setSelectedRow(cellValue.row);
 

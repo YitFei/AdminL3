@@ -85,6 +85,13 @@ const columns = [
     displayName: "Cost",
     inputType: "text",
   },
+
+  {
+    id: 9,
+    fieldName: "tag",
+    displayName: "Year",
+    inputType: "text",
+  },
   {
     id: 8,
     fieldName: "classCancel",

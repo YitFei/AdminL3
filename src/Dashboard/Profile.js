@@ -288,7 +288,7 @@ export default function Profile(props) {
       <Typography component="h5" variant="h5" color="black" gutterBottom>
         token:
       </Typography>
-      <Typography
+      {/* <Typography
         component="p"
         variant="p"
         color="black"
@@ -303,7 +303,7 @@ export default function Profile(props) {
         }}
       >
         {keycloak.token}
-      </Typography>
+      </Typography> */}
     </React.Fragment>
   );
 }
