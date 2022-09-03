@@ -285,9 +285,9 @@ export default function Profile(props) {
       >
         Sign Out
       </ColorButton>
-      <Typography component="h5" variant="h5" color="black" gutterBottom>
+      {/* <Typography component="h5" variant="h5" color="black" gutterBottom>
         token:
-      </Typography>
+      </Typography> */}
       {/* <Typography
         component="p"
         variant="p"
