@@ -79,7 +79,7 @@ const DashboardHome = (props) => {
   const [courseList, setCourseList] = React.useState([]);
   const [showDetails, setShowDetails] = React.useState(false);
   const [courseListByDate, setCourseListByDate] = React.useState([]);
-
+  console.log(courseList);
   React.useEffect(() => {
     MultiDatatable(
       "select a.course_active, a.course_name,a.teacher_id, b.* from l3education.t_course a left join l3education.t_timetable b on a.id = b.course_id where a.course_active = 'Y';",

@@ -277,9 +277,9 @@ export default function Profile(props) {
         onClick={() => {
           setCookie("isAuthenticated", "false");
 
-          window.location.href = keycloak.createLogoutUrl({
-            redirectUri: Main_URL + "/Admin",
-          });
+          window.location.href = keycloak.createLogoutUrl();
+
+          window.location.href = "https://admin.l3education.com.my" + "/Admin";
         }}
         variant="contained"
       >
