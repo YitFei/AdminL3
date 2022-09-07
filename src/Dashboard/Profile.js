@@ -278,8 +278,8 @@ export default function Profile(props) {
           setCookie("isAuthenticated", "false");
 
           window.location.href = keycloak.createLogoutUrl();
-
-          window.location.href = "https://admin.l3education.com.my" + "/Admin";
+          window.location.href = "http://localhost:3000" + "/Admin";
+          // window.location.href = "https://admin.l3education.com.my" + "/Admin";
         }}
         variant="contained"
       >
