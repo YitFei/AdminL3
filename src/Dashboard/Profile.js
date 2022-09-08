@@ -89,6 +89,7 @@ export default function Profile(props) {
       }
     });
   }, []);
+
   return (
     <React.Fragment>
       <Stack
@@ -277,8 +278,15 @@ export default function Profile(props) {
         onClick={() => {
           setCookie("isAuthenticated", "false");
 
-          window.location.href = keycloak.createLogoutUrl();
-          window.location.href = "http://localhost:3000" + "/Admin";
+          // window.location.href = keycloak.createLogoutUrl({
+          //   redirectUri: "http://localhost:3000" + "/Admin",
+          // });
+          window.location.href =
+            "https://auth.l3education.com.my/auth/realms/l3-education/protocol/openid-connect/logout";
+          // window.location.href = keycloak.logout({
+          //   redirectUri: "http://localhost:3000" + "/Admin",
+          // });
+          // window.location.href = "http://localhost:3000" + "/Admin";
           // window.location.href = "https://admin.l3education.com.my" + "/Admin";
         }}
         variant="contained"
