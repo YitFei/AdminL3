@@ -284,6 +284,15 @@ const Calendar = ({ showDetailsHandle, courseList }) => {
     }
   }
 
+  const merge = (first, second) => {
+    for (let i = 0; i < second.length; i++) {
+      first.push(second[i]);
+    }
+    return first;
+  };
+
+  // const [rowsAlreadyGenerated, setRowAlreadyGenerated] = useState([]);
+
   const renderCells = () => {
     try {
       const startDate = startOfWeek(currentMonth, { weekStartsOn: 1 });
@@ -296,12 +305,32 @@ const Calendar = ({ showDetailsHandle, courseList }) => {
       let days = [];
       let day = startDate;
       let formattedDate = "";
-
+      let rowsAlreadyGenerated = [];
       //check count of course list
       // console.log(courseList);
       //for (let iData = 0; iData < courseList.length; iData++) {
       //dr master means data row master
       //let drMaster = courseList[iData];
+
+      let maxRowCount = 0;
+      for (let dayOfWeek = 1; dayOfWeek < 8; dayOfWeek++) {
+        let dateInTimetable = format(
+          addDays(startDate, dayOfWeek - 1),
+          dateFormatProper
+        );
+
+        let checkMaxCount = courseList.filter((item) => {
+          let currentCourseDate = format(
+            new Date(item.course_date),
+            dateFormatProper
+          );
+
+          return currentCourseDate === dateInTimetable;
+        }).length;
+
+        if (checkMaxCount > maxRowCount) maxRowCount = checkMaxCount;
+      }
+
       for (let iDetail = 0; iDetail < courseList.length; iDetail++) {
         //dr detail means data row detail
 
@@ -332,11 +361,15 @@ const Calendar = ({ showDetailsHandle, courseList }) => {
         }
 
         //if need generate row is false then skip
-        if (!needGenerateRow) continue;
 
+        if (Number(maxRowCount) <= 0) break;
+        maxRowCount -= 1;
+        // if (!needGenerateRow) continue;
+        // testRow++;
         // set day of week 1 ~ 7
         for (let dayOfWeek = 1; dayOfWeek < 8; dayOfWeek++) {
           //get current detail course date
+
           let currentDetailCourseDate = format(
             new Date(drDetail["course_date"]),
             dateFormatProper
@@ -348,6 +381,45 @@ const Calendar = ({ showDetailsHandle, courseList }) => {
             dateFormatProper
           );
 
+          let needAddCell = false;
+          if (currentDetailCourseDate === dateInTimetable) {
+            let checkGenerated = rowsAlreadyGenerated.filter((r) => {
+              return r.id === drDetail.id;
+            });
+            if (checkGenerated.length === 0) {
+              needAddCell = true;
+              rowsAlreadyGenerated = [...rowsAlreadyGenerated, drDetail];
+            }
+          } else {
+            let otherCourseDate = courseList
+              .filter((itemA) => {
+                let otherCourseDate = format(
+                  new Date(itemA.course_date),
+                  dateFormatProper
+                );
+
+                return otherCourseDate === dateInTimetable;
+              })
+              .filter((itemA) => {
+                let alreadyExist = rowsAlreadyGenerated.find((itemB) => {
+                  return itemB.id === itemA.id;
+                });
+
+                return !alreadyExist;
+              });
+
+            if (otherCourseDate.length > 0) {
+              needAddCell = true;
+
+              rowsAlreadyGenerated = rowsAlreadyGenerated.concat(
+                otherCourseDate[0]
+              );
+            }
+          }
+
+          if (needAddCell) {
+            drDetail = rowsAlreadyGenerated[rowsAlreadyGenerated.length - 1];
+          }
           //check is is today
           let isToday =
             format(addDays(startDate, dayOfWeek - 1), dateFormatProper) ===
@@ -363,7 +435,7 @@ const Calendar = ({ showDetailsHandle, courseList }) => {
 
           days.push(
             <div className={`WeeklyCalendarcol WeeklyCalendarcell`}>
-              {currentDetailCourseDate === dateInTimetable ? (
+              {needAddCell ? (
                 <div
                   style={{
                     width: "100%",
@@ -435,7 +507,8 @@ const Calendar = ({ showDetailsHandle, courseList }) => {
                 </div>
               ) : (
                 // leave blank in row column
-                ""
+                // <div>{dayOfWeek}</div>
+                <div></div>
               )}
             </div>
           );

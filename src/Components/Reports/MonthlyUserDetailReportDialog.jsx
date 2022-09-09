@@ -71,7 +71,7 @@ export default function MonthlyUserDetailReportDialog(props) {
       URL_GetTeacherAttendanceByCourseId + props.data.id,
       localStorage.getItem("token")
     ).then((res) => {
-      setTeacherAttendance(res.data);
+      setTeacherAttendance(res.data === null ? [] : res.data);
     });
     API(
       "get",
