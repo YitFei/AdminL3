@@ -174,10 +174,10 @@ export default function CustomDialog(props) {
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => handleClose("Confirm")}>
+        {/* <Button onClick={() => handleClose("Confirm")}>
           <Typography sx={{ color: "red" }}>确认</Typography>
         </Button>
-        <Button onClick={() => handleClose("")}>取消</Button>
+        <Button onClick={() => handleClose("")}>取消</Button> */}
       </DialogActions>
     </Dialog>
   );

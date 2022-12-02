@@ -306,7 +306,7 @@ export default function MonthlyUserDetailReportDialog(props) {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item fullWidth xs={12} sx={{ mb: 0.5 }}>
+            {/* <Grid item fullWidth xs={12} sx={{ mb: 0.5 }}>
               <Grid container direction="row" alignItems="center">
                 <Grid item sx={{ border: 0, width: 120 }}>
                   签到 ：
@@ -342,7 +342,7 @@ export default function MonthlyUserDetailReportDialog(props) {
                     })}
                 </Grid>
               </Grid>
-            </Grid>
+            </Grid> */}
             <Grid item fullWidth xs={12} sx={{ mb: 0.8 }}>
               <Grid container direction="row" alignItems="center">
                 <Grid item sx={{ border: 0, width: 120 }}>

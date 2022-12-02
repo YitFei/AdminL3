@@ -92,12 +92,12 @@ const columns = [
     displayName: "Year",
     inputType: "text",
   },
-  {
-    id: 8,
-    fieldName: "classCancel",
-    displayName: "Class Cancel",
-    inputType: "date",
-  },
+  // {
+  //   id: 8,
+  //   fieldName: "classCancel",
+  //   displayName: "Class Cancel",
+  //   inputType: "date",
+  // },
 ];
 
 export default function CourseCard(props) {
