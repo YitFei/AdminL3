@@ -9,31 +9,31 @@ import { ConsoleLogger } from "@aws-amplify/core";
 
 const DAYS = [
   {
-    key: 7,
+    key: 1,
     label: "Sun",
   },
   {
-    key: 1,
+    key: 2,
     label: "Mon",
   },
   {
-    key: 2,
+    key: 3,
     label: "Tues",
   },
   {
-    key: 3,
+    key: 4,
     label: "Wed",
   },
   {
-    key: 4,
+    key: 5,
     label: "Thu",
   },
   {
-    key: 5,
+    key: 6,
     label: "Fri",
   },
   {
-    key: 6,
+    key: 7,
     label: "Sat",
   },
 ];
