@@ -215,7 +215,7 @@ export default function DataGridCourses(props) {
     if (!query) {
       return data;
     } else {
-      return data.filter((d) => d.courseName.toLowerCase().includes(query));
+      return data.filter((d) => d.courseName.toLowerCase().includes(query.toLowerCase()));
     }
   };
   async function fetechData(course, teacherInfo) {
