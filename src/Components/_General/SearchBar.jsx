@@ -17,7 +17,7 @@ export default function SearchBar(props) {
       variant="standard"
       value={props.query}
       onChange={(e) => {
-        setQuery(e.target.value);
+        setQuery(e.target.value.toLowerCase());
         // requestSearch(e.target.value);
       }}
       placeholder="Search..."
