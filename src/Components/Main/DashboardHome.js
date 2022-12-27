@@ -143,13 +143,13 @@ const DashboardHome = (props) => {
 
   let total = 0;
   function convertMonth(number) {
-    if (number === 1) return "MON";
-    else if (number === 2) return "TUE";
-    else if (number === 3) return "WED";
-    else if (number === 4) return "THUR";
-    else if (number === 5) return "FRI";
-    else if (number === 6) return "SAT";
-    else if (number === 7) return "SUN";
+    if (number === 2) return "MON";
+    else if (number === 3) return "TUE";
+    else if (number === 4) return "WED";
+    else if (number === 5) return "THUR";
+    else if (number === 6) return "FRI";
+    else if (number === 7) return "SAT";
+    else if (number === 1) return "SUN";
   }
   function ClassroomLinkFetch(Id) {
     API("get", "/onlineClassroom/get/" + Id, props.token).then((res) => {
