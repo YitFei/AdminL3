@@ -291,14 +291,15 @@ export default function DataGridUserDetail(props) {
     {
       field: "active",
       headerName: "Active",
-      width: 60,
+      width: 160,
       renderCell: (cellValue) => {
         return (
           <div>
             {cellValue.row.active === "Y" ? (
-              <ToggleOnIcon sx={{ marginLeft: "5px", color: "#32a852" }} />
+              <Button onClick={togglefunction} sx={{border:'1px solid black'}}><ToggleOnIcon sx={{ marginLeft: "5px", color: "#32a852" }} /></Button>
+              
             ) : (
-              <ToggleOffIcon sx={{ marginLeft: "5px", color: "#ff002b" }} />
+              <Button onClick={togglefunction} sx={{border:'1px solid black'}}><ToggleOffIcon sx={{ marginLeft: "5px", color: "#ff002b" }} /></Button>
             )}
           </div>
         );
@@ -382,7 +383,7 @@ export default function DataGridUserDetail(props) {
               columns={columns}
               rows={dataFiltered}
               rowsPerPageOptions={[5]}
-              checkboxSelection
+              // checkboxSelection
               onSelectionModelChange={(ids) => {
                 const selectedIDs = new Set(ids);
                 const selectedRows = dataFiltered.filter((row) =>
@@ -397,4 +398,8 @@ export default function DataGridUserDetail(props) {
       </Grid>
     </div>
   );
+}
+
+function togglefunction(){
+  console.log("toggle triggered");
 }

@@ -85,7 +85,7 @@ export default function DataGridVIPStudent(props) {
     {
       field: "course_name",
       headerName: "Course Name",
-      maxWidth: 150,
+      maxWidth: 250,
       flex: 1,
     },
 
@@ -98,28 +98,28 @@ export default function DataGridVIPStudent(props) {
     {
       field: "SpecialOfferCost",
       headerName: "Special Offer Cost",
-      width: 150,
+      width: 200,
     },
 
-    {
-      field: "delete",
-      headerName: "Delete",
-      sortable: false,
-      minWidth: 80,
-      flex: 0.2,
-      renderCell: (cellValue) => {
-        const onClick = (e) => {
-          setSelectedRow(cellValue.row);
-          setConfirmDialog(true);
-        };
+    // {
+    //   field: "delete",
+    //   headerName: "Delete",
+    //   sortable: false,
+    //   minWidth: 80,
+    //   flex: 0.2,
+    //   renderCell: (cellValue) => {
+    //     const onClick = (e) => {
+    //       setSelectedRow(cellValue.row);
+    //       setConfirmDialog(true);
+    //     };
 
-        return (
-          <Button fullWidth sx={{ height: 1 }} onClick={onClick}>
-            <DeleteIcon sx={{ color: "red" }}></DeleteIcon>
-          </Button>
-        );
-      },
-    },
+    //     return (
+    //       <Button fullWidth sx={{ height: 1 }} onClick={onClick}>
+    //         <DeleteIcon sx={{ color: "red" }}></DeleteIcon>
+    //       </Button>
+    //     );
+    //   },
+    // },
   ];
   const [confirmDialog, setConfirmDialog] = React.useState(false);
   const [confirm, setConfirm] = React.useState(false);
