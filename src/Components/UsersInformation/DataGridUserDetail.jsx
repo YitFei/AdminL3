@@ -257,10 +257,10 @@ export default function DataGridUserDetail(props) {
   const columns = [
     { field: "id", headerName: "ID", width: 150, hide: true },
     { field: "name", headerName: "Name", width: 150 },
-    { field: "hpNo", headerName: "Phone No", width: 100 },
-    { field: "email", headerName: "Email", width: 200 },
-    { field: "dob", headerName: "Birthday", width: 110 },
-    { field: "school", headerName: "School", width: 100 },
+    { field: "hpNo", headerName: "Phone No", width: 130 },
+    { field: "email", headerName: "Email", width: 270 },
+    { field: "dob", headerName: "Birthday", width: 130 },
+    { field: "school", headerName: "School", width: 180 },
     {
       field: "classInSchool",
       headerName: "Class In School",
@@ -305,7 +305,7 @@ export default function DataGridUserDetail(props) {
         );
       },
     },
-    { field: "parentName", headerName: "Parent Name", width: 100 },
+    { field: "parentName", headerName: "Parent Name", width: 150 },
     {
       field: "parentHpNo",
       headerName: "Parent Phone No.",
@@ -402,4 +402,5 @@ export default function DataGridUserDetail(props) {
 
 function togglefunction(){
   console.log("toggle triggered");
+  
 }

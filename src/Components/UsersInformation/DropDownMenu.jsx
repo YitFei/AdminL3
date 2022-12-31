@@ -13,6 +13,7 @@ function SimpleMenu(props) {
       setAnchorEl(event.currentTarget);
       props.onHover(event);
     }
+   
   }
 
   function handleClose() {
@@ -21,23 +22,37 @@ function SimpleMenu(props) {
 
   return (
     <div>
-      <Button
+      {props.currentSubscrioption.length == 0?<><Button
+        aria-owns={anchorEl ? "simple-menu" : undefined}
+        aria-haspopup="true"
+        onClick={handleClick}
+        // onMouseOver={handleClick}
+        // onMouseLeave={handleClose}
+        sx={{background:props.currentSubscrioption.length == 0 && '#ff3000'}}
+      >
+        <Image src={courseIcon} height={30} width={90} />
+      </Button></>:<><Button
         aria-owns={anchorEl ? "simple-menu" : undefined}
         aria-haspopup="true"
         onClick={handleClick}
         onMouseOver={handleClick}
+        // onMouseLeave={handleClose}
+        sx={{background:props.currentSubscrioption.length == 0 && '#ff3000'}}
       >
         <Image src={courseIcon} height={30} width={90} />
-      </Button>
+      </Button></>}
+      
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        onMouseLeave={handleClose}
         MenuListProps={{ onMouseLeave: handleClose }}
       >
+        
         {props.currentSubscrioption.map((data) => (
-          <MenuItem onClick={handleClose}>{data.course_name}</MenuItem>
+          props.currentSubscrioption.length !== 0 && <MenuItem onClick={handleClose}>{data.course_name}</MenuItem>
         ))}
       </Menu>
     </div>
